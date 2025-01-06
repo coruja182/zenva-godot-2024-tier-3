@@ -14,3 +14,15 @@ config/name="Infinite Scroller Project"
 run/main_scene="uid://bnx6xqy8q5w85"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=512
+window/size/viewport_height=256
+window/size/window_width_override=1152
+window/size/window_height_override=645
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
