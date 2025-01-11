@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://bnx6xqy8q5w85"]
+[gd_scene load_steps=17 format=3 uid="uid://bnx6xqy8q5w85"]
 
 [ext_resource type="Texture2D" uid="uid://b8p0w5650fwus" path="res://Assets/images/background.png" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://clbqg6q0r4bse" path="res://Scripts/parallax_bg.gd" id="1_go701"]
 [ext_resource type="Texture2D" uid="uid://bn8qs6ola1pym" path="res://Assets/images/water.png" id="3_5a7ea"]
 [ext_resource type="Texture2D" uid="uid://dbnn275pk338d" path="res://Assets/images/player_spritesheet.png" id="4_8j60k"]
 [ext_resource type="Script" uid="uid://bf11ru55xa735" path="res://Scripts/player.gd" id="4_fo5ed"]
+[ext_resource type="Texture2D" uid="uid://d1rbts8l8aguc" path="res://Assets/images/floor.png" id="6_5ukr8"]
+[ext_resource type="Script" uid="uid://c1ps6lye00cep" path="res://Scripts/platform.gd" id="7_o06y3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fo5ed"]
 atlas = ExtResource("4_8j60k")
@@ -53,8 +55,16 @@ animations = [{
 radius = 16.0
 height = 66.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8j60k"]
-size = Vector2(287, 20)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o06y3"]
+texture = ExtResource("6_5ukr8")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+
+[sub_resource type="TileSet" id="TileSet_fo5ed"]
+tile_size = Vector2i(40, 40)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_o06y3")
 
 [node name="World" type="Node2D"]
 
@@ -81,21 +91,19 @@ texture = ExtResource("3_5a7ea")
 stretch_mode = 1
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(81, 179)
+position = Vector2(80, 152)
 script = ExtResource("4_fo5ed")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_5a7ea")
-autoplay = "default"
-frame_progress = 0.0561109
+frame_progress = 0.825301
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_8j60k")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(144, 233)
-shape = SubResource("RectangleShape2D_8j60k")
+[node name="Platform" type="TileMapLayer" parent="."]
+position = Vector2(0, 216)
+tile_set = SubResource("TileSet_fo5ed")
+script = ExtResource("7_o06y3")
