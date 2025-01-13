@@ -79,13 +79,14 @@ texture = ExtResource("3_5a7ea")
 stretch_mode = 1
 
 [node name="Player" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(80, 152)
 script = ExtResource("4_fo5ed")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_5a7ea")
-frame_progress = 0.326004
+frame_progress = 0.651335
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, -1)
