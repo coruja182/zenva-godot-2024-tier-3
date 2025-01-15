@@ -3,7 +3,6 @@ class_name PlatformSpawner
 
 
 @onready var player: Player = %Player
-@onready var debug_info: Label = %DebugInfo
 
 var platform_scene: PackedScene = preload("res://Scenes/platform.tscn")
 var pool_size: int = 3
@@ -63,8 +62,6 @@ func reset_platform(platform: Platform) -> void:
 
 ## Configures and shows a platform from the pool or creates a new one if none are available
 func add_platform() -> Platform:
-	print_debug("Adding platform")
-
 	var platform_found: Platform = null
 
 	# try to find a hidden platform in the pool
