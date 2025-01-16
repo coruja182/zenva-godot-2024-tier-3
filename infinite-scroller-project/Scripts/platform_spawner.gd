@@ -11,6 +11,8 @@ var platform_pool: Array[Platform] = []
 var _last_platform_added: Platform
 var _PLATFORM_INITIAL_LENGTH: int = 3
 var _TILE_WIDTH: int = 40
+var _MIN_SPAWN_Y: int = 100
+var _MAX_SPAWN_Y: int = 220
 var DEFAULT_SPACING: int = _TILE_WIDTH * 2
 
 
@@ -35,8 +37,8 @@ func _initialize_platform_pool() -> void:
 	for i_platform_index in range(pool_size):
 		var platform_temp: Platform = create_platform()
 		platform_temp.platform_size = _PLATFORM_INITIAL_LENGTH
-		platform_temp.set_plaforms()
-		platform_temp.position = Vector2( player.global_position.x + i_platform_index * (_TILE_WIDTH * _PLATFORM_INITIAL_LENGTH) + DEFAULT_SPACING * i_platform_index, 210)
+		platform_temp.set_platforms()
+		platform_temp.position = Vector2( player.global_position.x + i_platform_index * (_TILE_WIDTH * _PLATFORM_INITIAL_LENGTH) + DEFAULT_SPACING * i_platform_index, _MAX_SPAWN_Y)
 		platform_pool.append(platform_temp)
 		_last_platform_added = platform_temp
 		platform_temp.show()
@@ -75,9 +77,9 @@ func add_platform() -> Platform:
 
 	# configure the platform
 	platform_found.platform_size = randi_range(2,5)
-	platform_found.set_plaforms()
+	platform_found.set_platforms()
 	var position_x = get_viewport().get_visible_rect().end.x
-	var position_y = randi_range(100, 220)
+	var position_y = randi_range(_MIN_SPAWN_Y, _MAX_SPAWN_Y)
 	platform_found.position = Vector2(position_x, position_y)
 	platform_found.show()
 	return platform_found
