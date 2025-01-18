@@ -18,8 +18,9 @@ func _on_audio_stream_player_2d_finished() -> void:
 
 
 func _on_body_entered(_body: Node) -> void:
+    print_debug("Coin %s collected!" % self.name)
     # check if the body that entered is the player
     if _body is Player:
         # disable the collision shape to prevent multiple collections
         hide()
-        collision_shape_2d.call_deferred("set_deferred", "disabled", true)
+        collision_shape_2d.call_deferred("set_disabled", true)
