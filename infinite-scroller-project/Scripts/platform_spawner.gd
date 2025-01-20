@@ -18,6 +18,7 @@ var DEFAULT_SPACING: int = _TILE_WIDTH * 2
 
 func _ready() -> void:
 	_initialize_platform_pool()
+	GameController.score = 0
 
 
 func _physics_process(_delta) -> void:
