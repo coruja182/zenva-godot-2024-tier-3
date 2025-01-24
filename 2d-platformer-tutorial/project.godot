@@ -11,5 +11,16 @@ config_version=5
 [application]
 
 config/name="2D Platformer Tutorial"
+run/main_scene="uid://uia42uq74qfo"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=324
+window/stretch/mode="viewport"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
