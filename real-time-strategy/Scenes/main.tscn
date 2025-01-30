@@ -172,6 +172,7 @@ navigation_polygon = SubResource("NavigationPolygon_ympgn")
 zoom = Vector2(4, 4)
 
 [node name="Unit" parent="." instance=ExtResource("2_h8nyf")]
+position = Vector2(-90, -16)
 max_health = 100
 health = 0
 damage = 20

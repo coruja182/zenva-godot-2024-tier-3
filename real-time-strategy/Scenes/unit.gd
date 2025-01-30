@@ -17,7 +17,34 @@ var target : Unit :
 @onready var sprite: Sprite2D = $Sprite
 
 func _ready() -> void:
+	print(global_position)
 	health = max_health
+	move_to_location(Vector2(60, 0))
+
+
+func _process(delta: float) -> void:
+	_target_check()
+
+
+func _physics_process(delta: float) -> void:
+	if navigation_agent_2d.is_navigation_finished():
+		return
+	
+	var direction = global_position.direction_to(navigation_agent_2d.get_next_path_position())
+	velocity = direction * move_speed
+	
+	move_and_slide()
+
+
+func _target_check():
+	if target != null:
+		var dist = global_position.distance_to(target.global_position)
+		
+		if dist <= attack_range:
+			navigation_agent_2d.target_position = global_position
+			_try_attack_target()
+		else:
+			navigation_agent_2d.target_position = target.global_position
 
 
 func set_target(p_new_target : Unit) -> void:
