@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://cprxd6g6peqxk"]
+[gd_scene load_steps=8 format=4 uid="uid://cprxd6g6peqxk"]
 
 [ext_resource type="Texture2D" uid="uid://bfo6k2qh7mm64" path="res://Sprites/tilemap.png" id="1_x3u15"]
 [ext_resource type="PackedScene" uid="uid://d3uaay403wmga" path="res://Scenes/unit.tscn" id="2_h8nyf"]
+[ext_resource type="PackedScene" uid="uid://d0g5elld4s43i" path="res://Scenes/player_unit.tscn" id="3_1guj8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ncnib"]
 texture = ExtResource("1_x3u15")
@@ -180,3 +181,6 @@ move_speed = 50.0
 attack_range = 20.0
 attack_rate = 0.2
 is_player = false
+
+[node name="PlayerUnit" parent="." instance=ExtResource("3_1guj8")]
+position = Vector2(-90, 29)
