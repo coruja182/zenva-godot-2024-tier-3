@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dohisbeu0a1qh"]
+
+[ext_resource type="PackedScene" uid="uid://d3uaay403wmga" path="res://Scenes/unit.tscn" id="1_fuy6n"]
+[ext_resource type="Script" path="res://Scenes/enemy_unit.gd" id="2_8g3ef"]
+[ext_resource type="Texture2D" uid="uid://7xk2pqb14cgx" path="res://Sprites/tile_0121.png" id="3_7c00r"]
+
+[node name="EnemyUnit" instance=ExtResource("1_fuy6n")]
+script = ExtResource("2_8g3ef")
+max_health = 100
+health = 0
+damage = 20
+move_speed = 50.0
+attack_range = 20.0
+attack_rate = 0.2
+is_player = false
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("3_7c00r")

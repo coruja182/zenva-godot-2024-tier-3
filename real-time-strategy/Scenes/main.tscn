@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=4 uid="uid://cprxd6g6peqxk"]
 
 [ext_resource type="Texture2D" uid="uid://bfo6k2qh7mm64" path="res://Sprites/tilemap.png" id="1_x3u15"]
-[ext_resource type="PackedScene" uid="uid://d3uaay403wmga" path="res://Scenes/unit.tscn" id="2_h8nyf"]
 [ext_resource type="PackedScene" uid="uid://d0g5elld4s43i" path="res://Scenes/player_unit.tscn" id="3_1guj8"]
+[ext_resource type="PackedScene" uid="uid://dohisbeu0a1qh" path="res://Scenes/enemy_unit.tscn" id="4_6hng3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ncnib"]
 texture = ExtResource("1_x3u15")
@@ -172,15 +172,9 @@ navigation_polygon = SubResource("NavigationPolygon_ympgn")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[node name="Unit" parent="." instance=ExtResource("2_h8nyf")]
-position = Vector2(-90, -16)
-max_health = 100
-health = 0
-damage = 20
-move_speed = 50.0
-attack_range = 20.0
-attack_rate = 0.2
-is_player = false
-
 [node name="PlayerUnit" parent="." instance=ExtResource("3_1guj8")]
-position = Vector2(-90, 29)
+position = Vector2(-96, 8)
+is_player = true
+
+[node name="EnemyUnit" parent="." instance=ExtResource("4_6hng3")]
+position = Vector2(98, 4)
