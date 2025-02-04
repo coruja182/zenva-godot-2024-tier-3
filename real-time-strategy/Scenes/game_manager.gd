@@ -16,3 +16,19 @@ func _get_selected_unit():
 		return intersection[0].collider
 
 	return null
+
+
+func _try_selected_unit():
+	pass
+
+
+func _selected_unit(unit: Unit):
+	pass
+
+
+func _unselected_unit(unit: Unit):
+	pass
+
+
+func _try_command_unit(unit: Unit):
+	pass
