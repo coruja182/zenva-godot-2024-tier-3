@@ -19,7 +19,6 @@ var target : Unit :
 func _ready() -> void:
 	print(global_position)
 	health = max_health
-	move_to_location(Vector2(60, 0))
 
 
 func _process(delta: float) -> void:
@@ -69,3 +68,7 @@ func take_damage(p_damage_to_take : int) -> void:
 	if health <= 0:
 		print_debug("unit ", self.name, " died")
 		queue_free()
+
+# to be implemented by subclasses
+func toggle_selection_visual_sprite(value: bool):
+	pass

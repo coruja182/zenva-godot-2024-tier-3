@@ -31,7 +31,7 @@ func _get_mouse_event(p_event: InputEvent) -> MouseAction :
 	return MouseAction.NONE
 
 
-func _get_selected_unit() -> Node2D:
+func _get_selected_unit() -> Unit:
 	var space = get_world_2d().direct_space_state
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = get_global_mouse_position()
@@ -44,6 +44,7 @@ func _get_selected_unit() -> Node2D:
 
 
 func _try_select_unit():
+	print_debug("_try_select_unit")
 	var unit_or_null = _get_selected_unit()
 	if unit_or_null != null and unit_or_null is Unit and unit_or_null.is_player:
 		_select_unit(unit_or_null)
@@ -56,10 +57,23 @@ func _select_unit(p_unit: Unit):
 	selected_unit = p_unit
 	selected_unit.toggle_selection_visual_sprite(true)
 
-
+# unselects the current unit
 func _unselect_unit():
-	pass
+	if selected_unit != null:
+		selected_unit.toggle_selection_visual_sprite(false)
+		
+	selected_unit = null
 
 
+# called when we right click
 func _try_command_unit():
-	pass
+	print_debug("_try_command_unit")
+	if selected_unit == null:
+		return
+		
+	var target = _get_selected_unit()
+	
+	if target != null and not target.is_player:
+		selected_unit.set_target(target)
+	else:
+		selected_unit.move_to_location(get_global_mouse_position())
