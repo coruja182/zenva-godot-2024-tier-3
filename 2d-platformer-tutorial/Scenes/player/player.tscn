@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuahnfnhgafnk"]
+[gd_scene load_steps=10 format=3 uid="uid://cuahnfnhgafnk"]
 
 [ext_resource type="Texture2D" uid="uid://d3les0mlqncrc" path="res://Assets/kenney_pixel-platformer/Tiles/Characters/tile_0000.png" id="1_8p05u"]
 [ext_resource type="Script" uid="uid://5x8mqxehsr76" path="res://Scripts/player/player.gd" id="1_eo61r"]
+[ext_resource type="Script" uid="uid://bs1ao5ddto6se" path="res://Scripts/player/states/dash_state.gd" id="3_e41v5"]
 [ext_resource type="Script" uid="uid://ckkfw5to31vxa" path="res://Scripts/player/states/idle_state.gd" id="3_mxepk"]
+[ext_resource type="Script" uid="uid://chqaeblv4pskw" path="res://Scripts/player/states/fall_state.gd" id="5_6upyo"]
+[ext_resource type="Script" uid="uid://dlv6miggpqukl" path="res://Scripts/player/states/jump_state.gd" id="6_6k3cy"]
+[ext_resource type="Script" uid="uid://dqix0ky7d3v1h" path="res://Scripts/player/states/move_state.gd" id="6_xxarj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kf5c0"]
 animations = [{
@@ -11,7 +15,7 @@ animations = [{
 "texture": ExtResource("1_8p05u")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"Idle",
 "speed": 5.0
 }]
 
@@ -24,7 +28,7 @@ script = ExtResource("1_eo61r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kf5c0")
-animation = &"idle"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
@@ -35,3 +39,28 @@ shape = SubResource("CapsuleShape2D_8p05u")
 [node name="IdleState" type="Node" parent="States"]
 script = ExtResource("3_mxepk")
 metadata/_custom_type_script = "uid://ckkfw5to31vxa"
+
+[node name="MoveState" type="Node" parent="States"]
+script = ExtResource("6_xxarj")
+metadata/_custom_type_script = "uid://dqix0ky7d3v1h"
+
+[node name="JumpState" type="Node" parent="States"]
+script = ExtResource("6_6k3cy")
+metadata/_custom_type_script = "uid://dlv6miggpqukl"
+
+[node name="FallState" type="Node" parent="States"]
+script = ExtResource("5_6upyo")
+metadata/_custom_type_script = "uid://chqaeblv4pskw"
+
+[node name="DashState" type="Node" parent="States"]
+script = ExtResource("3_e41v5")
+metadata/_custom_type_script = "uid://bs1ao5ddto6se"
+
+[node name="DebugState" type="Label" parent="."]
+offset_left = -29.0
+offset_top = -28.0
+offset_right = 61.0
+offset_bottom = -14.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "State: "

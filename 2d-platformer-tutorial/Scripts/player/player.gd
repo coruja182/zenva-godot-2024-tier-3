@@ -3,7 +3,7 @@ class_name PlayerController
 
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var debug_state: Label = $DebugState
 
 var max_speed: int = 8000
 var acceleration: int = 1000
@@ -22,6 +22,10 @@ var max_jumps: int = 3
 var jump_count: int = 0
 
 
+func _ready():
+	change_state("Idle")
+
+
 func _physics_process(delta: float) -> void:
 
 	if not is_on_floor():
@@ -36,3 +40,13 @@ func _physics_process(delta: float) -> void:
 		animation.flip_h = true
 
 	move_and_slide()
+
+
+func change_state(new_state: String) -> void:
+	current_state = new_state + "State"
+	for state_it in get_node("States").get_children():
+		if state_it is State:
+			if state_it.name == current_state:
+				state_it.reset_node()
+				break
+	debug_state.text = "State: %s" % new_state
