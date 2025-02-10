@@ -43,10 +43,16 @@ func _physics_process(delta: float) -> void:
 
 
 func change_state(new_state: String) -> void:
-	current_state = new_state + "State"
+	current_state = new_state
 	for state_it in get_node("States").get_children():
 		if state_it is State:
-			if state_it.name == current_state:
+			if state_it.name == "%sState" % current_state:
 				state_it.reset_node()
 				break
 	debug_state.text = "State: %s" % new_state
+
+
+func on_enter_idle() -> void:
+	jump_count = 0
+	can_dash = true
+	animation.play("Idle")
