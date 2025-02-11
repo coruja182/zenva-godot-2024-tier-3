@@ -56,3 +56,18 @@ func on_enter_idle() -> void:
 	jump_count = 0
 	can_dash = true
 	animation.play("Idle")
+
+
+func jump(delta: float) -> void:
+	jump_count += 1
+	velocity.y = -jump_height * delta
+
+
+func move_left(delta: float) -> void:
+	var target_velocity: float = min(velocity.x + acceleration * delta, max_speed * delta)
+	velocity.x = lerp(velocity.x, target_velocity, WEIGHT)
+
+
+func move_right(delta: float) -> void:
+	var target_velocity: float = min(velocity.x - acceleration * delta, -max_speed * delta)
+	velocity.x = lerp(velocity.x, target_velocity, WEIGHT)
