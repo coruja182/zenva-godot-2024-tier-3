@@ -14,10 +14,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		player.change_state("Idle")
 
-	if Input.is_action_just_pressed("jump") and (player.jump_count < player.max_jumps):
+	if Input.is_action_just_pressed("jump") and player.can_jump():
 		player.jump(delta)
 		player.change_state("Jump")
 
 	if Input.is_action_just_pressed("dash") and player.can_dash and player.is_on_floor():
 		player.change_state("Dash")
-	player.velocity.x = lerp(player.velocity.x, 0.0, player.FRICTION)
+
+	if player.velocity.y > 0:
+		player.change_state("fall")
