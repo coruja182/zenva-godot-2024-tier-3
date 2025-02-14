@@ -12,14 +12,17 @@ config_version=5
 
 config/name="2D Platformer Tutorial"
 run/main_scene="uid://uia42uq74qfo"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=576
 window/size/viewport_height=324
+window/size/window_width_override=1728
+window/size/window_height_override=972
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
