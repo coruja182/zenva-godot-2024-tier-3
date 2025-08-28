@@ -17,4 +17,4 @@ func _process(delta: float) -> void:
 			if dist <= detect_range:
 				set_target(player)
 				
-	super._target_check()
+	super(delta)

@@ -19,7 +19,6 @@ var target : Unit :
 
 
 func _ready() -> void:
-	print(global_position)
 	health = max_health
 	
 	var gm = get_node("/root/Main") as GameManager

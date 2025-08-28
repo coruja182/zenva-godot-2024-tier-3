@@ -44,7 +44,6 @@ func _get_selected_unit() -> Unit:
 
 
 func _try_select_unit():
-	print_debug("_try_select_unit")
 	var unit_or_null = _get_selected_unit()
 	if unit_or_null != null and unit_or_null is Unit and unit_or_null.is_player:
 		_select_unit(unit_or_null)
@@ -67,7 +66,6 @@ func _unselect_unit():
 
 # called when we right click
 func _try_command_unit():
-	print_debug("_try_command_unit")
 	if selected_unit == null:
 		return
 		
