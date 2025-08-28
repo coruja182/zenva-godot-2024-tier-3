@@ -6,10 +6,10 @@
 
 [node name="EnemyUnit" instance=ExtResource("1_fuy6n")]
 script = ExtResource("2_8g3ef")
-max_health = 100
-health = 0
+detect_range = 100.0
+max_health = 70
 damage = 20
-move_speed = 50.0
+move_speed = 35.0
 attack_range = 20.0
 attack_rate = 0.2
 is_player = false

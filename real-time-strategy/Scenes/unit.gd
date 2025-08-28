@@ -2,23 +2,32 @@ class_name Unit extends CharacterBody2D
 
 
 @export var max_health : int = 100
-@export var health : int
 @export var damage : int = 20
 @export var move_speed : float = 50.0
 @export var attack_range : float = 20.0
 @export var attack_rate : float = 0.2
 @export var is_player : bool = false
 
+@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
+@onready var sprite: Sprite2D = $Sprite
+
+
+var health : int
 var last_attack_time : float
 var target : Unit : 
 	set = set_target
 
-@onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
-@onready var sprite: Sprite2D = $Sprite
 
 func _ready() -> void:
 	print(global_position)
 	health = max_health
+	
+	var gm = get_node("/root/Main") as GameManager
+	
+	if is_player:
+		gm.players.append(self)
+	else:
+		gm.enemies.append(self)
 
 
 func _process(delta: float) -> void:

@@ -179,5 +179,21 @@ position = Vector2(-96, 8)
 attack_rate = 0.5
 is_player = true
 
+[node name="PlayerUnit2" parent="." instance=ExtResource("3_1guj8")]
+position = Vector2(-83, 31)
+attack_rate = 0.5
+is_player = true
+
+[node name="PlayerUnit3" parent="." instance=ExtResource("3_1guj8")]
+position = Vector2(-77, -11)
+attack_rate = 0.5
+is_player = true
+
 [node name="EnemyUnit" parent="." instance=ExtResource("4_6hng3")]
 position = Vector2(98, 4)
+
+[node name="EnemyUnit2" parent="." instance=ExtResource("4_6hng3")]
+position = Vector2(105, 24)
+
+[node name="EnemyUnit3" parent="." instance=ExtResource("4_6hng3")]
+position = Vector2(108, -19)
