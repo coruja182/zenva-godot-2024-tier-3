@@ -68,6 +68,10 @@ func take_damage(p_damage_to_take : int) -> void:
 	if health <= 0:
 		print_debug("unit ", self.name, " died")
 		queue_free()
+		
+	sprite.modulate = Color.RED
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color.WHITE
 
 # to be implemented by subclasses
 func toggle_selection_visual_sprite(value: bool):
